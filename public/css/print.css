@@ -1,0 +1,27 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30-Aug-2018, 10:57:16
+    Author     : Kiro
+*/
+
+
+body{
+    font-family: tahoma, sans-serif !important;
+    font-size:10px;
+}
+
+.panel-title{
+    text-align:center;
+}
+
+table,th,td{
+    text-align: center;
+}
+
+.no-margin-bottom{
+    margin-bottom:0px !important;
+}

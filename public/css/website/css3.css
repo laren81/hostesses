@@ -1,0 +1,203 @@
+/*
+*
+*
+* Css3 enhancements
+* we keep them separated to allow css validation
+*
+*/
+
+
+/*	layout
+-------------------------------------------------------------- */
+
+#pageBorder{
+	border-radius: 0px 5px 5px 5px;
+   -moz-border-radius-bottomleft: 5px;
+   -moz-border-radius-bottomright: 5px;
+   -moz-border-radius-topright: 5px;
+   -webkit-border-bottom-left-radius: 5px;
+   -webkit-border-bottom-right-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+}
+
+#topBarLink a{
+	border-radius: 0px 0px 5px 5px;
+   -moz-border-radius-bottomleft: 5px;
+   -moz-border-radius-bottomright: 5px;
+   -webkit-border-bottom-left-radius: 5px;
+   -webkit-border-bottom-right-radius: 5px;
+}
+
+/*	Primary Links
+-------------------------------------------------------------- */
+
+#navigation-primary a{
+	border-radius: 5px 5px 0 0;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 5px;
+   -webkit-border-top-left-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+}
+
+div.mega{
+	border-radius: 0px 5px 5px 5px;
+   -moz-border-radius-bottomleft: 5px;
+   -moz-border-radius-bottomright: 5px;
+   -moz-border-radius-topright: 5px;
+   -webkit-border-bottom-left-radius: 5px;
+   -webkit-border-bottom-right-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+}
+
+div.mega.alt{
+	border-radius: 5px 0px 5px 5px;
+   -moz-border-radius-bottomleft: 5px;
+   -moz-border-radius-bottomright: 5px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 0px;
+   -webkit-border-bottom-left-radius: 5px;
+   -webkit-border-bottom-left-radius: 5px;
+   -webkit-border-top-right-radius: 0px;
+   -webkit-border-top-left-radius: 0px;
+}
+
+div.mega span.close-panel{
+	border-radius: 0px 0px 5px 5px;
+   -moz-border-radius-bottomleft: 5px;
+   -moz-border-radius-bottomright: 5px;
+   -webkit-border-bottom-left-radius: 5px;
+   -webkit-border-bottom-right-radius: 5px;
+}
+
+/*	Advertise
+-------------------------------------------------------------- */
+
+#header-image-navigation a{
+	border-radius: 10px 10px 10px 10px;
+   -moz-border-radius: 10px;
+   -webkit-border-radius: 10px;
+}
+
+
+/*	Secondary Links
+-------------------------------------------------------------- */
+	
+#navigation-secondary span{
+	border-radius: 5px 5px 5px 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+/*	Nodes
+-------------------------------------------------------------- */
+
+.field-name-field-tags a,
+.teaser-created{
+	border-radius: 5px 5px 5px 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+span.teaser-sticky{
+	border-radius: 3px 3px 3px 3px;
+   -moz-border-radius: 3px;
+   -webkit-border-radius: 3px;
+}
+
+
+/*	blocks
+-------------------------------------------------------------- */
+
+#block-user-login .block-title{
+	border-radius: 5px 5px 0px 0px;
+   -moz-border-radius-topleft: 5px;
+   -moz-border-radius-topright: 5px;
+   -webkit-border-top-left-radius: 5px;
+   -webkit-border-top-right-radius: 5px;
+}
+
+#block-user-login .content{
+	border-radius: 0px 0px 5px 5px;
+   -moz-border-radius-bottomleft: 5px;
+   -moz-border-radius-bottomright: 5px;
+   -webkit-border-bottom-left-radius: 5px;
+   -webkit-border-bottom-right-radius: 5px;
+}
+
+/*	Comments
+-------------------------------------------------------------- */
+
+.comment-content{
+	border-radius: 5px 5px 5px 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+
+/*	Drupal elements
+-------------------------------------------------------------- */
+
+.messages{
+	border-radius: 5px 5px 5px 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+.item-list ul.pager li,
+.item-list ul.pager li a{
+	border-radius: 3px 3px 3px 3px;
+   -moz-border-radius: 3px;
+   -webkit-border-radius: 3px;
+}
+
+.taxonomy-term-description{ /* taxonomy term page */
+	border-radius: 5px 5px 5px 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+
+/*  Typography and other items (we keep font face statements separated)
+-------------------------------------------------------------- */
+
+ul.primary a{
+	border-radius: 3px 3px 0px 0px;
+   -moz-border-radius-topleft: 3px;
+   -moz-border-radius-topright: 3px;
+   -webkit-border-top-left-radius: 3px;
+   -webkit-border-top-right-radius: 3px;
+}
+
+ul.secondary a{
+	border-radius: 5px 5px 5px 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+blockquote,
+.form-text,
+.form-textarea{
+	border-radius: 5px 5px 5px 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+.form-submit{
+	border-radius: 12px 12px 12px 12px;
+   -moz-border-radius: 12px;
+   -webkit-border-radius: 12px;
+}
+
+#search .form-submit{
+	border-radius: 5px 5px 5px 5px;
+   -moz-border-radius: 5px;
+   -webkit-border-radius: 5px;
+}
+
+.tabs ul.primary a{ /* node tabs*/
+	border-radius: 3px 3px 0px 0px;
+   -moz-border-radius-topleft: 3px;
+   -moz-border-radius-topright: 3px;
+   -webkit-border-top-left-radius: 3px;
+   -webkit-border-top-right-radius: 3px;
+}

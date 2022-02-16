@@ -1,0 +1,122 @@
+.chosen-container {
+    font-size: 13px;
+    float:left;
+    width:195px !important;
+}
+
+.chosen-narrow{
+    width:160px !important;    
+}
+
+.chosen-narrow .chosen-choices{
+    border-radius: 0px 5px 5px 0px !important;
+}
+
+.input-group .chosen-container {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 13px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    margin-right:0px;
+    margin-bottom:5px;
+}
+
+.chosen-container-single .chosen-single {
+    line-height: 32px;
+    cursor: pointer;
+}
+.chosen-container-single .chosen-default {
+    color: #000
+}
+
+.chosen-container-multi .chosen-choices {    
+    border-radius: 5px 5px 5px 5px;
+    min-height: 34px;
+    background:-moz-linear-gradient(#fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%);
+    vertical-align:middle;
+    cursor:pointer;
+}
+
+.chosen-container-multi .chosen-choices li.search-field{
+    cursor:pointer;
+}
+
+.chosen-container-multi .chosen-choices li.search-field input[type=text] {
+    height: 27px;
+    color: #000;
+    cursor:pointer;
+}
+
+.chosen-container-multi.chosen-container .chosen-choices::after {
+    display: block;
+    background: url(chosen-sprite.png) no-repeat 0 2px;
+    width: 16px;
+    height: 100%;
+    content: " ";
+    position: absolute;
+    right: 0;
+}
+
+.chosen-container-active .chosen-single {
+    border: 1px solid #1ab394;
+}
+
+.chosen-container-active .chosen-choices {
+    border: 1px solid  #1ab394;
+}
+
+.btn-admin-filter{
+    float:left;
+    border-radius: 5px 0px 0px 5px;
+    min-height:34px;
+    width:35px;
+    padding:0;
+}
+
+.yadcf-filter-range-date{
+    width:88px !important;
+    height:34px;
+    border-radius:5px;
+    border: 1px solid #aaaaaa;
+    padding-left: 10px;
+    color: #444 !important;
+    background:#fff;
+}
+
+.yadcf-filter-range-date-wide{
+    width:195px !important;
+    height:35px;
+    border-radius:5px;
+    border: 1px solid #aaaaaa;
+    padding-left: 10px;
+    color: #444 !important;
+    background:-moz-linear-gradient(#fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%);
+}
+
+.yadcf-filter-wrapper-inner{
+    border-radius:5px;
+    border:none !important;
+}
+
+.yadcf-filter-range-date-seperator {
+    margin-left: 2px !important;
+    margin-right: 2px !important;
+}
+
+.yadcf-filter-range-date::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #444;
+    opacity: 1; /* Firefox */
+}
+
+.yadcf-filter-range-date-wide::placeholder {
+    color: #444;
+    opacity: 1;
+}
+
+.form-control::-moz-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #444;
+    opacity: 1; /* Firefox */
+}

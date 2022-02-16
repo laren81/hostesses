@@ -1,0 +1,179 @@
+.btn-w-m {
+    min-width: 100px;
+    min-height: 34px;
+}
+
+.select2-selection {
+    height: 34px !important;
+}
+
+.width-150 {
+    width: 180px;
+    margin-bottom:5px;
+}
+
+.width-180 {
+    width: 180px;
+}
+
+.table-responsive{
+    border:none;
+}
+
+table{
+    white-space:nowrap;
+}
+
+#page-wrapper {
+    min-height: calc(100vh - 65px) !important;
+}
+
+.float-right{
+    float:right;
+}
+
+.right_alined{
+    text-align: right;
+    padding-right:5px;
+}
+
+.col-form-label{
+    padding-top: 7px;
+    text-align: right;
+}
+
+fieldset{
+    width:100%;
+}
+
+.not-active {
+    pointer-events: none;
+    cursor: default;
+}
+
+.custom-file-input{
+    display: none !important;
+}
+
+.upload_file{
+    display: none !important;
+}
+
+.img-row-edit{
+    float:left;
+}
+
+.img-row{
+    float:left;
+    margin-left:5px;
+}
+
+.file-row-edit{
+    float:left;
+}
+
+.file-row{
+    float:left;
+    margin-left:5px;
+}
+
+.edit_element_file{
+    width:120px;
+}
+
+.page_image,.edit_page_image,.element_image,.edit_element_image{
+    width:120px;
+}
+
+.image_div,.edit_image_div{
+    margin-bottom:15px;
+}
+
+.clear-both{
+    clear:both;
+}
+
+.dark_bordered_warning {
+    height: 34px;
+    min-width: 195px;
+    padding: 7px 12px;
+    margin-bottom: 5px;
+}
+
+.btn-var1 {
+    margin-left: 44%;
+}
+
+.btn-var2 {
+    margin-left: 28%;
+}
+
+.left-17 {
+    margin-left: 17%;
+}
+
+.table-condition_products {
+    margin-left: 35%;
+    width: 48%;
+}
+
+.table-bonus_products {
+    margin-left: 18%;
+    width: 42%;
+}
+
+.choosen_condition_products {
+    margin-top: 25px;
+}
+
+.choosen_bonus_products {
+    margin-top: 25px;
+}
+
+.pull-right span{
+    margin-right: 5px;
+}
+
+.storage_label {
+    width: 21%;
+    text-align: left !important;
+}
+
+.storage_info {
+    margin-left: 15px;
+}
+
+.measure_label {
+    margin: 0px 10px;
+        margin-bottom: 0px;
+}
+
+.btn-alt{
+    background-color: #8d18bf;
+    border-color: #8d18bf;
+    color: #FFFFFF;
+}
+
+.form-inline .chosen-container{
+    background: #fff;
+}
+
+.form-inline .chosen-container-multi .chosen-choices{
+    background:#fff;
+}
+
+.form-inline .chosen-container-single .chosen-single{
+    background:#fff;
+}
+.select2-container{
+    margin-bottom:5px !important;
+}
+
+
+
+@media only screen and (max-width: 964px) {
+    div.dataTables_wrapper div.dataTables_length, div.dataTables_wrapper div.dataTables_filter, div.dataTables_wrapper div.dataTables_info, div.dataTables_wrapper div.dataTables_paginate {
+        text-align: left;
+        padding-left: 5%;
+    }    
+}

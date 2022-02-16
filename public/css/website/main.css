@@ -1,0 +1,239 @@
+
+body {
+    padding: 0;
+    margin: 0;
+    background: #f3f3f4;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif !important;
+    font-weight: 399;
+}
+/*--- navigation bar ---*/
+.navbar {
+    width:1170px;
+    margin:auto;
+}
+.navbar-nav {
+    float: right;
+    margin: 0;
+}
+
+.nav-link,
+.navbar-brand {
+    color: #fff;
+    cursor: pointer;
+}
+.nav-link {
+    margin-right: 1em !important;
+}
+.nav-link:hover {
+    color: #000;
+}
+
+.nav-item{
+    display: block;
+    padding: 10px 10px 10px 35px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+ .navbar-fixed-top{ 
+    position:static;
+}
+
+.column {
+    float: left;
+    padding: 10px;
+    color:#fff;
+}
+
+.column-left {
+    padding-left:2%;
+    text-align:left;
+}
+
+.column-center {
+    text-align:center;
+}
+
+.column-right {
+    padding-right:2%;
+    text-align:right;
+}
+
+.header-holder a, footer a{
+    color:#fff;
+}
+
+.header-holder a:focus, .header-holder a:hover{
+    color:#007bff;
+}
+
+.header-holder{
+    background-color: #2f4050;
+}
+
+.navbar-holder{
+    background-color:#4682B4
+}
+
+.navbar-anchor {
+    float: left;
+    padding: 15px 15px 15px 20px;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.logo{
+    height: 40px;
+}
+
+.logo-sport{
+    height: 30px;
+}
+
+.page-wrapper{
+    max-width:1170px;
+    margin:auto;
+}
+
+.clear-50{
+    clear:both;
+    height:50px;
+}
+
+.ibox-title, .ibox-content {
+    border-style: none;
+}
+
+#main-image{
+    width:100%;
+    height:auto;
+}
+
+.ibox-content{
+    display: block;
+    overflow-x: auto;
+}
+
+.ibox-content, .ibox-title {
+    background-color: inherit;
+}
+
+
+.text-holder{
+    padding:15px;
+}
+
+.page-footer {
+    background-color: #4682B4;
+    color: #ccc;
+    padding: 30px 0 10px;
+}
+
+footer a:focus, footer a:hover{
+    color:#000;
+}
+
+.footer-copyright {
+    color: #666;
+    padding: 40px 0;
+}
+
+footer ul li{
+    padding: 0;
+    list-style-type: none;
+}
+
+.footer-menu{
+    padding-left:0px;    
+}
+
+footer .col-sm-12{
+    margin-bottom:20px;
+}
+
+.page-wrapper{
+    min-height: calc(100vh - 360px);
+}
+#copyright {
+    position:relative;
+    background-color: #2f4050;
+    width: 100%;
+    text-align: left;
+    min-height:50px;
+    height:auto;
+    padding-top: 15px;
+    padding-left: 8%;
+}
+
+.navbar-toggler{
+    margin-left:auto;
+    margin-right:20px;
+}
+
+.ibox-link{
+    position:relative;
+    left:15px;
+    padding-bottom:7px;
+    float:right;
+    padding-right:15px;
+}
+
+.panel-heading a, .panel-heading button {
+    position: relative;
+    bottom: 50px;
+    left: 15px;
+    padding-bottom: 7px;
+    float: right;
+    padding-right: 15px;
+    color:#fff;
+}
+
+#logo-container {
+    float: left;
+    height: 100px;
+    margin-right: 3%;
+    margin-top: 0px;
+}
+
+#logo-container img{
+    width:100px;
+    height:auto;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .nav-item{
+        padding-left: 15px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .column-left, .column-right, .column-center{
+        text-align: center;
+    }
+    
+    .page-wrapper{
+        min-height: calc(100vh - 499px);
+    }
+    
+    .navbar-nav {
+        float: none;
+    }
+    
+    .panel-heading a, .panel-heading button{
+        bottom:50px;
+    }
+    
+    .img-row {
+        float: none !important;
+    }
+    
+    #copyright .col-sm-12{
+        text-align:center;
+    }
+}

@@ -1,0 +1,221 @@
+
+#contentWrapper {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.0, #eee),color-stop(0.05, #fff));
+    background: -moz-linear-gradient(top center,#eee,#fff 5%);
+}
+
+.form-item .form-text, .form-item .form-textarea {
+    font-size: 1em;
+    border: 1px solid #ccc;
+    color: #333;
+    background: #fff;
+}
+.form-item .form-text, .form-item .form-textarea {
+    padding: 5px;
+}
+
+.outsidecontent a, .outsidecontent li a.active, #header-images a, #navigation-secondary a {
+    color: #009082;
+    font-size: medium;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.utility .block {
+    margin: 0px;
+}
+.block {
+    margin-bottom: 15px;
+}
+
+.container-inline div, .container-inline label {
+    display: inline;
+}
+.element-invisible {
+    position: absolute !important;
+    overflow: hidden;
+    height: 1px;
+}
+
+boxshadow #pageBorder {
+    box-shadow: 5px 5px 20px #051b32;
+    -webkit-box-shadow: 5px 5px 20px #051b32;
+    -moz-box-shadow: -5px 5px 30px #062544;
+}
+
+.width-180 {
+    width: 180px !important;
+}
+
+.form-inline .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.yadcf-filter-range-date {
+    width: 95px !important;
+    height: 34px;
+    border-radius: 5px;
+    border: 1px solid #aaaaaa;
+    padding-left: 6px;
+    color: #444 !important;
+    background: -moz-linear-gradient(#fff 20%, #f6f6f6 50%, #eee 52%, #f4f4f4 100%);
+}
+
+.select2-selection {
+    height: 34px !important;
+}
+
+.form-inline{
+    margin-bottom:20px;
+}
+
+.yadcf-filter-wrapper-inner {
+    border-radius: 5px;
+    border: none !important;
+}
+
+.yadcf-filter-range-date-seperator {
+    margin-left: 2px !important;
+    margin-right: 2px !important;
+}
+
+.select2-container{
+    width:100% !important;
+}
+
+div.dataTables_wrapper div.dataTables_paginate {
+    margin: 0;
+    white-space: nowrap;
+    text-align: right;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+    margin: 2px 0;
+    white-space: nowrap;
+}
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+a{
+    color:#000;
+}
+
+.pagination > li > a, .pagination > li > span {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: inherit;
+    float: left;
+    line-height: 1.42857;
+    margin-left: -1px;
+    padding: 4px 10px;
+    position: relative;
+    text-decoration: none;
+}
+
+.pagination > li > a, .pagination > li > span {
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    color: #337ab7;
+}
+
+.pagination > li {
+    display: inline;
+}
+
+.tabs-container{
+    position: relative;
+    box-shadow: 0 0 0px rgba(50, 50, 50, 0.7) inset;
+    height: auto;
+    margin-top: 20px;
+    padding: 1px;
+    overflow: auto;
+    border-left: 2px solid;
+    width: max-content;
+}
+
+.tabs-container .nav-tabs > li {
+    float: left;
+    margin-bottom: -2px;
+    margin-top: -2px;
+}
+.nav.nav-tabs li {
+    background: #ccc;
+    border: none;
+}
+
+.tabs-container .nav-tabs {
+    border-bottom: 1px solid #e7eaec;
+}
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+}
+.nav {
+    display: -ms-flexbox;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #495057;
+    background-color: #eee;
+    border-color: #dee2e6 #dee2e6 #fff;
+    text-decoration: underline;
+}
+.md-skin .nav > li > a {
+    font-weight: 400;
+}
+.md-skin .nav > li > a {
+    color: #676a6c;
+    padding: 14px 20px 14px 25px;
+}
+.nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+}
+.nav-tabs > li > a {
+    color: #A7B1C2;
+    font-weight: 600;
+    padding: 10px 20px 10px 25px;
+}
+.nav > li > a {
+    color: #676a70;
+    font-weight: 600;
+    padding: 14px 20px 14px 25px;
+    display: block;
+    text-decoration: none;
+    text-transform:uppercase;
+}
+.nav-link {
+    display: block;
+    padding: .5rem 1rem;
+}
+
+.middle-box{
+    padding:20px;
+}
+
+#underContent{
+    margin-left:0px;
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+#totalContainer{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.utility{
+    float:right;
+}

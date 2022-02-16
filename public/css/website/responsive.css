@@ -1,0 +1,93 @@
+
+.auto-flow{
+    overflow:auto;
+}
+
+.ibox-content table{
+    white-space: nowrap;
+}
+
+.row{
+    margin:0px;
+}
+
+@media only screen and (max-width: 845px) {
+
+    .nav > li > a {
+        padding: 10px 10px 14px 10px;
+    }
+}
+
+@media only screen and (max-width: 715px) {
+
+    .nav > li > a {
+        padding: 10px 5px 14px 5px;
+    }
+}
+
+@media only screen and (max-width: 535px) {
+
+    .wide{
+        padding:0px;
+    }
+    
+    .panel-body{
+        padding:0px !important;
+    }
+    
+    .ibox-content table{
+        font-size:13px;
+    }  
+    
+    .ibox .form-inline{
+        font-size:13px;
+    }
+    
+    .width-180{
+        width:110px;
+    }
+    
+    .yadcf-filter-range-date {
+        width: 85px !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .ibox-title h3{
+        text-align:center;
+    }
+    
+    .b-r h3, .b-r p{
+       text-align:center; 
+    }
+    
+    .page-wrapper .col-lg-12{
+        padding:0px;
+    }
+    
+    #logo{
+        margin-left:5px;
+    }
+    
+    footer .col-sm-12{
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .nav.nav-tabs li {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 265px) {
+
+    .navbar-anchor{
+        padding:5px;
+    }
+    
+    .panel-heading a, .panel-heading button {
+        bottom: 65px;
+    }
+}
