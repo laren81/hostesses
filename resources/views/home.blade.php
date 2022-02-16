@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-md-8 col-md-offset-2">
         <div class="ibox float-e-margins">
-            <div class="ibox-title"><h5>Dashboard</h5>
+            <div class="ibox-title"><h5>Dashboard1</h5>
               <div class="ibox-tools"> <span class="label label-warning-light pull-right">Welcome</span></div>
             </div>
 
