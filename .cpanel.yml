@@ -1,8 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/hostessa/
+    - export DEPLOYPATH=/home/username/public_html/
     - /bin/cp -r * $DEPLOYPATH
-    - /bin/cp -r ./public/* $DEPLOYPATH/public_html/
-    - /bin/cp ./public/js/*.js $DEPLOYPATH/public_html/js
-    - /bin/cp ./public/css/*.css $DEPLOYPATH/public_html/css
