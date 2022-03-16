@@ -187,4 +187,8 @@ class EventRepository implements EventRepositoryInterface
         
         return $positions;
     }
+    
+    public function findJob($id){
+        return Job::find($id);
+    }
 }

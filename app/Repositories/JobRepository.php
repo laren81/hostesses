@@ -28,32 +28,38 @@ class JobRepository implements JobRepositoryInterface
     }
     
     public function cancelConcurrentJobs($job) {
+        $date_from = $job->event_position->date_from!=null ? $job->event_position->date_from : $job->event_position->event->date_from;
+        $date_to = $job->event_position->date_to!=null ? $job->event_position->date_to : $job->event_position->event->date_to;
         
-        $concurrent_jobs = Job::leftJoin('event_positions as ep','ep.id','=','jobs.event_position_id')->leftJoin('events','events.id','=','ep.event_id')
-                ->where('jobs.id','!=',$job->id)->where('jobs.user_id',$job->user_id)->where(function($q){$q->where('jobs.status',0);$q->orWhere('jobs.status',1);})
-                ->select(['jobs.id','jobs.user_id','jobs.event_position_id','city_id',
-                            DB::raw('case when ep.date_from IS NOT NULL then ep.date_from ELSE events.date_from end as job_date_from'),
-                            DB::raw('case when ep.date_to IS NOT NULL then ep.date_to ELSE events.date_to end as job_date_to'),
-                            DB::raw('case when ep.time_from IS NOT NULL then ep.time_from ELSE events.time_from end as job_time_from'),
-                            DB::raw('case when ep.time_till IS NOT NULL then ep.time_till ELSE events.time_till end as job_time_till'),
-                            DB::raw("CONCAT(case when ep.date_from IS NOT NULL then ep.date_from ELSE events.date_from end,' ',case when ep.time_from IS NOT NULL then ep.time_from ELSE events.time_from END) AS timestamp_from"),
-                            DB::raw("CONCAT(case when ep.date_to IS NOT NULL then ep.date_to ELSE events.date_to end,' ',case when ep.time_till IS NOT NULL then ep.time_till ELSE events.time_till END) AS timestamp_to")
-                        ])
-                ->havingRaw("(TIMESTAMPDIFF(HOUR,timestamp_to,'".($job->event_position->date_from!=null ? $job->event_position->date_from : $job->event_position->event->date_from)." ".($job->event_position->time_from!=null ? $job->event_position->time_from : $job->event_position->event->time_from)."')<2 and TIMESTAMPDIFF(HOUR,'".($job->event_position->date_to!=null ? $job->event_position->date_to : $job->event_position->event->date_to)." ".($job->event_position->time_till!=null ? $job->event_position->time_till : $job->event_position->event->time_till)."',timestamp_from)<2))")
-                ->get();                
-
-        foreach($concurrent_jobs as $index=>$concurrent_job){
-            if((round(((strtotime($job->event_position->time_from!=null ? $job->event_position->time_from : $job->event_position->event->time_from)) - strtotime($concurrent_job->job_time_till)) / 3600,2)+2>=0 ||
-                round((strtotime($concurrent_job->job_time_from) - strtotime(($job->event_position->time_till!=null ? $job->event_position->time_till : $job->event_position->event->time_till))) / 3600,2)+2>=0)
-            ){
-                unset($concurrent_jobs[$index]);
-            }
-            else{
-                
-                $concurrent_job->status=6;
-                $concurrent_job->save();
-            }
-        }
+        $time_from = $job->event_position->time_from!=null ? $job->event_position->time_from : $job->event_position->event->time_from;
+        $time_till = $job->event_position->time_till!=null ? $job->event_position->time_till : $job->event_position->event->time_till;
+        
+        $concurrent_jobs = Job::leftJoin('event_positions as ep','ep.id','=','jobs.event_position_id')
+            ->leftJoin('events','events.id','=','ep.event_id')
+            ->leftJoin('cities','cities.id','=','events.city_id')
+            ->leftJoin('hostesses','hostesses.user_id','=','jobs.user_id')
+            ->where('jobs.id','!=',$job->id)->where('jobs.user_id',$job->user_id)->where(function($q){$q->where('jobs.status',0);$q->orWhere('jobs.status',1);})
+            ->select(['jobs.id','jobs.user_id','jobs.event_position_id','events.city_id','internal_location','driver_licence','own_car',
+                        DB::raw('case when ep.date_from IS NOT NULL then ep.date_from ELSE events.date_from end as job_date_from'),
+                        DB::raw('case when ep.date_to IS NOT NULL then ep.date_to ELSE events.date_to end as job_date_to'),
+                        DB::raw('case when ep.time_from IS NOT NULL then ep.time_from ELSE events.time_from end as job_time_from'),
+                        DB::raw('case when ep.time_till IS NOT NULL then ep.time_till ELSE events.time_till end as job_time_till'),
+                        DB::raw("CONCAT(case when ep.date_from IS NOT NULL then ep.date_from ELSE events.date_from end,' ',case when ep.time_from IS NOT NULL then ep.time_from ELSE events.time_from END) AS timestamp_from"),
+                        DB::raw("CONCAT(case when ep.date_to IS NOT NULL then ep.date_to ELSE events.date_to end,' ',case when ep.time_till IS NOT NULL then ep.time_till ELSE events.time_till END) AS timestamp_to"),
+                        DB::raw("case when events.city_id!=".$job->event_position->event->city_id." and events.city_id!=0 then ACOS(SIN(RADIANS(cities.lat))*SIN(RADIANS('".$job->event_position->event->city->lat."')) + COS(RADIANS(cities.lat)) * COS(RADIANS('".$job->event_position->event->city->lat."')) * COS(RADIANS(cities.lng) - RADIANS('".$job->event_position->event->city->lng."')) ) * 6380 ELSE 0 end AS distance")
+            ])
+            ->havingRaw("(((job_date_from<='".$date_from."' AND job_date_to>='".$date_from."') or (job_date_from>='".$date_from."' AND job_date_from<='".$date_to."')) AND (internal_location=2 OR (internal_location=1 AND (((DATE_add(job_time_from, INTERVAL 2 HOUR)<='".$time_from."' AND DATE_add(job_time_till, INTERVAL 2 HOUR)>='".$time_from."') OR (DATE_add(job_time_from, INTERVAL 2 HOUR)>='".$time_from."' AND DATE_add(job_time_from, INTERVAL 2 HOUR)<='".$time_till."')) OR distance>(case when hostesses.driver_licence=1 and hostesses.own_car=1 then 200 else 50 end)))))")        
+            ->get();
+            
+        foreach($concurrent_jobs as $concurrent_job){
+            $concurrent_job->status = 6;
+            $concurrent_job->save();
+        }    
+            
         return true;
+    }
+    
+    public function findHostessJob($request){
+        return Job::where('id',$request->job_id)->where('user_id',$request->user_id)->first();
     }
 }

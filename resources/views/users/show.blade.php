@@ -1,5 +1,20 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+span.stars, span.stars span {
+    display: block;
+    background: url(stars.png) 0 -16px repeat-x;
+    width: auto;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
+</style>
+@endsection
+
 @section('content')
 <div class="container">
     @include('shared.messages')
@@ -67,6 +82,18 @@
                                                 {{ $user->active==1 ? __('texte.users_arr.show.yes') : __('texte.users_arr.show.no') }}
                                             </div>
                                         </div>
+                                        
+                                        @if($user->role_id==2)
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <div class="form-group">
+                                                <strong>{{__('texte.users_arr.show.rating')}}: </strong>
+                                                <div style='display:flex;'>
+                                                    <span class="stars" data-rating="{{$user->rating()}}" data-num-stars="5" style='color:orange'></span>
+                                                    <p>({{count($user->ratings)}})</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -377,4 +404,19 @@
         </div>
     </div>
 </div>
+<script type='text/javascript'>
+$(document).ready(function(){
+    $('.stars').stars();
+});
+
+$.fn.stars = function() {
+    return $(this).each(function() {
+        var rating = $(this).data("rating");
+        var fullStar = new Array(Math.floor(rating + 1)).join('<i class="fa fa-star"></i>');
+        var halfStar = ((rating%1) !== 0) ? '<i class="fa fa-star-half-o"></i>': '';
+        var noStar = new Array(Math.floor($(this).data("numStars") + 1 - rating)).join('<i class="fa fa-star"></i>');
+        $(this).html(fullStar + halfStar );
+    });
+}
+</script>
 @endsection

@@ -8,6 +8,7 @@ use App\Http\Controllers\Website\EventController;
 use App\Http\Controllers\Website\JobController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\Website\RatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -138,7 +139,9 @@ Route::group(['middleware' => ['auth']], function(){
         
         Route::post('review_application', [JobController::class,'reviewApplication'])->name('review_application')->middleware(['role:Client']);
         
+        Route::get('ratings/{event_id}/create', [RatingController::class,'ratePersonnel'])->name('ratings.create')->middleware(['role:Client']);
         
+        Route::post('ratings/store', [RatingController::class,'storeRating'])->name('ratings.store')->middleware(['role:Client']);
         
     });
 });

@@ -116,6 +116,9 @@
                                                 <a type='button' href='{{route('event_offers.show',$event->offer->id)}}' class='btn btn-default' title='Show offer'><i class='glyphicon glyphicon-eur'></i></a>
                                                 @endif
                                             @endif
+                                            @if($event->status==5)
+                                            <a type='button' href='{{route('ratings.create',$event->id)}}' class='btn btn-default' title='Rate personnel'><i class='glyphicon glyphicon-star'></i></a>
+                                            @endif
                                         </td> 
                                         <td hidden>{{ date_format(new DateTime($event->date_from), 'd.m.Y')}}</td>
                                         <td hidden>{{ date_format(new DateTime($event->date_to), 'd.m.Y')}}</td>

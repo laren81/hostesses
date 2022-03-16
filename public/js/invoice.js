@@ -10,12 +10,12 @@ $(document).ready(function(){
         
 function add_row(row){   
     add_empty_row();  
-    
+    console.log(row);
     $('#service_'+j).val(row.service);
     $('#quantity_'+j).val(row.quantity!=null ? row.quantity : row.count_hosteses*row.days);
-    $('#staff_wages_'+j).val(row.staff_wages.toFixed(2)).attr('data-value',row.staff_wages.toFixed(2));
-    $('#booking_charge_'+j).val(row.booking_charge.toFixed(2));
-    $('#additional_charge_'+j).val(row.additional_charge.toFixed(2));
+    $('#staff_wages_'+j).val(row.staff_wages).attr('data-value',row.staff_wages);
+    $('#booking_charge_'+j).val(row.booking_charge);
+    $('#additional_charge_'+j).val(row.additional_charge);
     $('#value_'+j).val((row.value!=null ? row.value : row.count_hosteses*row.total).toFixed(2));
 }
 

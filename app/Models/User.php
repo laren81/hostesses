@@ -65,9 +65,12 @@ class User extends Authenticatable implements MessengerProvider
         $this->notify(new GeneratePasswordNotification($token));
     }
     
-    public function documents()
-    {
-        return $this->morphMany('App\Document', 'documentable');
+    public function ratings(){
+        return $this->hasMany('App\Models\Rating');
+    }
+    
+    public function rating(){
+        return $this->ratings->sum('stars')/count($this->ratings);
     }
     
     public function role(){

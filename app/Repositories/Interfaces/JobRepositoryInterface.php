@@ -10,4 +10,6 @@ interface JobRepositoryInterface
     public function getHostessJobs($id);
     
     public function cancelConcurrentJobs($job);
+    
+    public function findHostessJob($request);
 }

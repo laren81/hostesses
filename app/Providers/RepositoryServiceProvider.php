@@ -14,6 +14,7 @@ use App\Repositories\Interfaces\RegionRepositoryInterface;
 use App\Repositories\Interfaces\CityRepositoryInterface;
 use App\Repositories\Interfaces\JobRepositoryInterface;
 use App\Repositories\Interfaces\InvoiceRepositoryInterface;
+use App\Repositories\Interfaces\RatingRepositoryInterface;
 
 use App\Repositories\UserRepository;
 use App\Repositories\RoleRepository;
@@ -26,6 +27,7 @@ use App\Repositories\RegionRepository;
 use App\Repositories\CityRepository;
 use App\Repositories\JobRepository;
 use App\Repositories\InvoiceRepository;
+use App\Repositories\RatingRepository;
 
 use Illuminate\Support\ServiceProvider; 
 
@@ -53,5 +55,6 @@ class RepositoryServiceProvider extends ServiceProvider
        $this->app->bind(CityRepositoryInterface::class, CityRepository::class);
        $this->app->bind(JobRepositoryInterface::class, JobRepository::class);
        $this->app->bind(InvoiceRepositoryInterface::class, InvoiceRepository::class);
+       $this->app->bind(RatingRepositoryInterface::class, RatingRepository::class);
    }
 }

@@ -3,15 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/dev/projects/hosteses/app/Models/User.php</file>
-            <file>file:/D:/dev/projects/hosteses/resources/views/event_offers/create.blade.php</file>
+            <file>file:/D:/dev/projects/hosteses/app/Http/Controllers/Website/JobController.php</file>
             <file>file:/D:/dev/projects/hosteses/resources/views/website/events/show_offer.blade.php</file>
-            <file>file:/D:/dev/projects/hosteses/app/Repositories/EventOfferRepository.php</file>
-            <file>file:/D:/dev/projects/hosteses/app/Models/Job.php</file>
-            <file>file:/D:/dev/projects/hosteses/app/Models/EventPosition.php</file>
-            <file>file:/D:/dev/projects/hosteses/app/Repositories/EventRepository.php</file>
+            <file>file:/D:/dev/projects/hosteses/resources/views/website/events/index.blade.php</file>
+            <file>file:/D:/dev/projects/hosteses/app/Repositories/InvoiceRepository.php</file>
+            <file>file:/D:/dev/projects/hosteses/resources/views/website/events/rate_personnel.blade.php</file>
+            <file>file:/D:/dev/projects/hosteses/routes/web.php</file>
+            <file>file:/D:/dev/projects/hosteses/app/Http/Controllers/InvoiceController.php</file>
+            <file>file:/D:/dev/projects/hosteses/resources/views/invoices/create.blade.php</file>
+            <file>file:/D:/dev/projects/hosteses/public/js/invoice.js</file>
             <file>file:/D:/dev/projects/hosteses/resources/lang/en/texte.php</file>
             <file>file:/D:/dev/projects/hosteses/app/Http/Controllers/Website/EventController.php</file>
+            <file>file:/D:/dev/projects/hosteses/resources/views/website/events/create.blade.php</file>
         </group>
     </open-files>
 </project-private>

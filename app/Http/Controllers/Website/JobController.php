@@ -52,4 +52,5 @@ class JobController extends Controller
         
         return response()->json(['warning' => 'Job proposal not found']);
     } 
+    
 }

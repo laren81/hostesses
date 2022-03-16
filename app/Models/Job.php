@@ -20,4 +20,7 @@ class Job extends Model
         return $this->belongsTo('App\Models\EventPosition');
     }
     
+    public function rating(){
+        return $this->hasOne('App\Models\Rating');
+    }
 }

@@ -35,11 +35,19 @@
                                 {{$event->name }}
                             </div>
                         </div>   
-
+                        @if($event->region_id!=0)
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>{{__('texte.events_arr.jobs.region')}}: </strong>
                                 {{ $event->region->name}}
+                            </div>
+                        </div>
+                        @endif
+                        
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong>{{__('texte.events_arr.jobs.city')}}: </strong>
+                                {{ $event->city_id!=0 ? $event->city->name : $event->external_city}}
                             </div>
                         </div>
 
@@ -57,7 +65,7 @@
                             <div class="panel-heading" id="heading{{$index}}" style="padding:20px 15px !important;">  
                                 <h4 class="panel-title" style="display:inline-block;width:70%">Position {{$index+1}}</h4>
                                 <div style='float:right;'>
-                                    <a class="btn btn-success" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}">Виж повече</a>
+                                    <a class="btn btn-success" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}">{{__('texte.events_arr.jobs.details')}}</a>
                                 </div>                     
                             </div>
                              <div id="collapse{{$index}}" class="panel-collapse collapse">                                     
@@ -107,11 +115,12 @@
                                         <div class="col-xs-12 col-sm-12 col-md-12" style="margin-top:10px;">
                                             <table class="table table-bordered">
                                                 <tr>
-                                                    <th>Name</th>
-                                                    <th>Status</th>
-                                                    <th>Hostess comment</th>
-                                                    <th>Client comment</th>
-                                                    <th>Admin comment</th>
+                                                    <th>{{__('texte.events_arr.jobs.name')}}</th>
+                                                    <th>{{__('texte.events_arr.jobs.status')}}</th>
+                                                    <th>{{__('texte.events_arr.jobs.hostess_comment')}}</th>
+                                                    <th>{{__('texte.events_arr.jobs.client_comment')}}</th>
+                                                    <th>{{__('texte.events_arr.jobs.admin_comment')}}</th>
+                                                    <th>{{__('texte.events_arr.jobs.actions')}}</th>
                                                 </tr> 
                                                 @foreach($jobs->where('event_position_id',$position->id) as $job)
                                                 <tr>
@@ -120,6 +129,7 @@
                                                     <td>{{$job->hostess_comment}}</td>
                                                     <td>{{$job->client_comment}}</td>
                                                     <td>{{$job->admin_comment}}</td>
+                                                    <td><a type='button' class='btn btn-warning btn-circle job_status' data-id='{{$job->id}}' data-status="{{$job->status}}" title='Change status' ><i class='glyphicon glyphicon-pencil'></i></a></td>
                                                 </tr>
                                                 @endforeach
                                             </table>
@@ -136,6 +146,73 @@
                 <div class="panel-footer"></div>
             </div>
         </div>
+        <div id="modal-change_status" class="modal inmodal" tabindex="-1" role="dialog" aria-labelledby="modal-label">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content animated flipInY">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 id="modal-label" class="modal-title">Change job status</h4>
+                    </div>
+                    <div class="modal-body" style='display:flex;'>                        
+                        <div class="control-group col-xs-12 col-md-12">
+                            <label for="job_status" class="col-sm-2 col-form-label">{{__('texte.events_arr.jobs.status')}}</label>
+                            <select class="form-control" id="job_status" name="job_status" required>
+                                @foreach(__('texte.job_statuses_arr') as $key=>$value)
+                                <option value="{{$key}}">{{$value}}</option>
+                                @endforeach
+                            </select>
+                        </div>    
+                        
+                        <div class="control-group col-xs-12 col-md-12">
+                            <label for="admin_comment" class="col-sm-2 col-form-label">{{__('texte.events_arr.jobs.note')}}</label>
+                            <input type="text" class="form-control" id="admin_comment" name="admin_comment"/>
+                        </div> 
+                    </div>
+                    <div class="modal-footer">
+                        <button id="confirm_change" type="button" class="btn btn-default" onclick="change_job_status()">{{__('texte.events_arr.jobs.yes')}}</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"> {{__('texte.events_arr.jobs.no')}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<script type="text/javascript">
+
+$('.job_status').on('click', function(){
+    var id = $(this).attr('data-id');
+    var status = $(this).attr('data-status');
+    
+    $('#job_status').val(status);
+    
+    $('#confirm_change').attr('onclick','change_job_status('+ id + ')');
+    
+    $('#modal-change_status').modal('show');
+});
+
+function change_job_status(id){
+    var status = $('#job_status').val();
+    var comment = $('#admin_comment').val();
+    
+    $.ajax({
+        headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: '/admin/change_job_status',
+                type: 'POST',
+        data: { 'id' : id,
+                'status' : status,
+                'comment' : comment},
+        success: function(response){
+                    if(response.warning){
+                        alert(response.warning);
+                    }
+                    else{
+                        alert(response.success);
+                        location.reload();
+                    }
+                }
+    });
+}
+</script>
 @endsection

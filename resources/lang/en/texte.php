@@ -531,7 +531,16 @@ return [
             'female' => 'Female',
             'male' => 'Male',
             'gender_not_specified' => 'Gender not of importance',
-            'events' => 'Events'
+            'events' => 'Events',
+            'details' => 'Details',
+            'hostess_comment' => 'Hostess comment',
+            'client_comment' => 'Client comment',
+            'admin_comment' => 'Admin comment',
+            'actions' => 'Actions',
+            'yes' => 'Yes',
+            'no' => 'No',
+            'city' => 'City',
+            'note' => 'Note'
         ),
     ),
     'prices_arr' => array(

@@ -17,9 +17,75 @@
         color: #676a6c;
     }    
     
-    .application_img{
-        
-    }
+    .rating {
+        display: inline-block;
+        position: relative;
+        height: 50px;
+        line-height: 50px;
+        font-size: 50px;
+      }
+
+      .rating label {
+        position: absolute;
+        top: 0;
+        left: 15px;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .rating label:last-child {
+        position: static;
+      }
+
+      .rating label:nth-child(1) {
+        z-index: 5;
+      }
+
+      .rating label:nth-child(2) {
+        z-index: 4;
+      }
+
+      .rating label:nth-child(3) {
+        z-index: 3;
+      }
+
+      .rating label:nth-child(4) {
+        z-index: 2;
+      }
+
+      .rating label:nth-child(5) {
+        z-index: 1;
+      }
+
+      .rating label input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+      }
+
+      .rating label .icon {
+        float: left;
+        color: transparent;
+      }
+
+      .rating label:last-child .icon {
+        color: #000;
+      }
+
+      .rating:not(:hover) label input:checked ~ .icon,
+      .rating:hover label:hover input ~ .icon {
+        color: #09f;
+      }
+
+      .rating label input:focus:not(:checked) ~ .icon:last-child {
+        color: #000;
+        text-shadow: 0 0 5px #09f;
+      }
+      
+      .rated_label{
+          color: #09f;
+      }
 </style>
 @endsection
 
@@ -33,7 +99,7 @@
                     <h3 class="panel-title">
                         {{__('website.events_arr.show_offer.event_offer')}}       
                         <a type="button" class="btn btn-default" href="{{route('events.index')}}" title="{{__('website.events_arr.show_offer.events')}}">{{__('website.events_arr.show_offer.events')}}</a> 
-                        @if($offer->event->status==1 && $offer->accepted==0)
+                        @if($event->status==1 && $offer->accepted==0)
                         <button type="button" class="btn btn-default" data-target="#modal-confirm_offer" data-toggle='modal' title="{{__('website.events_arr.show_offer.accept_offer')}}">{{__('website.events_arr.show_offer.accept_offer')}}</button> 
                         @endif
                     </h3>
@@ -45,15 +111,15 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>{{__('website.events_arr.show_offer.name')}}: </strong>
-                                {{$offer->event->name }}
+                                {{$event->name }}
                             </div>
                         </div>   
 
-                        @if($offer->event->internal_locaiton==1)
+                        @if($event->internal_locaiton==1)
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>{{__('website.events_arr.show_offer.region')}}: </strong>
-                                {{$offer->event->region->name}}
+                                {{$event->region->name}}
                             </div>
                         </div>
                         @endif
@@ -61,26 +127,26 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>{{__('website.events_arr.show_offer.city')}}: </strong>
-                                {{$offer->event->internal_location==1 ? ($offer->event->city->zip.' '.$offer->event->city->name) : $offer->event->external_city}}
+                                {{$event->internal_location==1 ? ($event->city->zip.' '.$event->city->name) : $event->external_city}}
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>{{__('website.events_arr.show_offer.location')}}: </strong>
-                                {{ $offer->event->location }}
+                                {{ $event->location }}
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>{{__('website.events_arr.show_offer.period')}}: </strong>
-                                @if(date('m.Y',strtotime($offer->event->date_from)) === date('m.Y',strtotime($offer->event->date_to)))
-                                    {{date('d',strtotime($offer->event->date_from))}} - {{date('d.m.Y',strtotime($offer->event->date_to))}}
-                                @elseif(date('Y',strtotime($offer->event->date_from)) === date('Y',strtotime($offer->event->date_to)))
-                                    {{date('d.m',strtotime($offer->event->date_from))}} - {{date('d.m.Y',strtotime($offer->event->date_to))}}
+                                @if(date('m.Y',strtotime($event->date_from)) === date('m.Y',strtotime($event->date_to)))
+                                    {{date('d',strtotime($event->date_from))}} - {{date('d.m.Y',strtotime($event->date_to))}}
+                                @elseif(date('Y',strtotime($event->date_from)) === date('Y',strtotime($event->date_to)))
+                                    {{date('d.m',strtotime($event->date_from))}} - {{date('d.m.Y',strtotime($event->date_to))}}
                                 @else
-                                    {{date('d.m.Y',strtotime($offer->event->date_from))}} - {{date('d.m.Y',strtotime($offer->event->date_to))}}
+                                    {{date('d.m.Y',strtotime($event->date_from))}} - {{date('d.m.Y',strtotime($event->date_to))}}
                                 @endif
                             </div>
                         </div>
@@ -88,7 +154,7 @@
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
                                 <strong>{{__('website.events_arr.show_offer.time')}}: </strong>
-                                {{ date('H:i',strtotime($offer->event->time_from)).' - '.date('H:i',strtotime($offer->event->time_till)) }}
+                                {{ date('H:i',strtotime($event->time_from)).' - '.date('H:i',strtotime($event->time_till)) }}
                             </div>
                         </div>
 
@@ -120,7 +186,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($offer->rows as $index=>$row)
+                                                    @foreach($event->offer->rows as $index=>$row)
                                                         <tr>
                                                             <td>{{$index+1}}</td>
                                                             <td>{{$row->event_position->description()}}</td>
@@ -136,7 +202,7 @@
                                                 <tfoot>
                                                     <tr>
                                                         <td colspan='6' style='text-align:right;'>{{__('website.events_arr.show_offer.total')}}</td>
-                                                        <td>{{number_format($offer->total_amount,2,'.',' ')}}</td>
+                                                        <td>{{number_format($event->offer->total_amount,2,'.',' ')}}</td>
                                                         <td></td>
                                                     </tr>
                                                 </tfoot>
@@ -145,27 +211,19 @@
                                     </div>
                                 </div>
                                 
-                                @if($offer->accepted==1)
+                                
                                 <div class="ibox float-e-margins" style="margin-top:50px;">
                                     <div class="ibox-content wide">                                        
                                         @foreach($positions as $index=>$position)
                                         
-                                            @if(count($positions)>1)
-                                                Applications for {{__('website.events_arr.show_offer.position')}} {{$index+1}}
-                                            @else
-                                                Applications
-                                            @endif
-                                            
+                                        Personnel
+                                        
                                         <div class="row">
-                                            @foreach($position->jobs->where('status','>',0)->where('status','!=',3) as $job)
+                                            @foreach($position->jobs->where('status',2) as $job)
                                             <div class="col-xs-12 col-sm-3 col-lg-2 dark-text" style="width:auto;padding-right:9px;">	
                                                 <div class="item">
                                                     <img class="application_img" src="{{url('/images/thumbs/'.$job->user->hostess->portrait[0]->name)}}" alt="{{$job->user->hostess->portrait[0]->name}}">
-                                                    <div class="item-overlay">
-                                                        @if(__('texte.job_statuses_images_arr')[$job->status]!=null)
-                                                        <img src="{{url('/images/'.__('texte.job_statuses_images_arr')[$job->status].'.png')}}" style='width:50%'>
-                                                        @endif
-                                                    </div>	
+                                                    	
                                                     <div class="item-content">
                                                         <div class="item-top-content">
                                                             <div class="item-top-content-inner">
@@ -193,9 +251,17 @@
                                                 <p><strong>{!! !empty($job->extra_charge) ? 'Extra '.number_format($job->extra_charge,2). 'EUR/daily' : '<br/>' !!}</strong></p>
                                                 
                                                 <p><a class="btn btn-default" style="width:90%; margin-bottom: 15px;" href="{{route('hostesses.show',$job->user->hostess->id)}}" target="_blank" title="Show Hostess"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></i>View Details</a></p>
-                                                <p>
-                                                    <button type="button" class="btn btn-default accept_application" style="width:40%; margin-bottom: 15px;" title="Confirm application" data-toggle="modal" data-target="#modal-review_application" data-id="{{$job->id}}" {{$job->status!=1 ? "disabled" : ""}}><i class="glyphicon glyphicon-ok" style="color:green;"></i></button>
-                                                    <button type="button" class="btn btn-default reject_application" style="width:40%; margin-bottom: 15px;" title="Reject application" data-toggle="modal" data-target="#modal-review_application" data-id="{{$job->id}}" {{$job->status!=1 ? "disabled" : ""}}><i class="glyphicon glyphicon-ban-circle" style="color:#ca1717"></i></button>
+                                                <p style="text-align:center;">
+                                                    @if($job->rating)
+                                                     <label style="margin-bottom:25px;" title="{{$job->rating->comment}}">
+                                                        @for($i=1;$i<=$job->rating->stars;$i++)
+                                                            <span class="icon rated_label">★</span>
+                                                        @endfor
+                                                     </label>
+                                                    <br/>
+                                                    @else
+                                                    <button type="button" class="btn btn-default rate_hostess" style="width:90%; margin-bottom: 15px;" title="Rate hostess" data-toggle="modal" data-target="#modal-rate_hostess" data-id="{{$job->id}}" data-user="{{$job->user_id}}"><i class="glyphicon glyphicon-star"></i></button>
+                                                    @endif
                                                 </p>
                                                 <hr>
                                             </div>
@@ -204,84 +270,75 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                @else
-                                <div class="ibox float-e-margins" style="margin-top:50px;">
-                                    <div class="ibox-content wide">
-                                        There are booth models listed in our agency for your inquiry in {{$offer->event->internal_locaiton==1 ? ($offer->event->city->zip.' '.$offer->event->city->name) : $offer->event->external_city}}. If you are interest in our first offer, we will check the availibilty of our staff. 
-                                        
-                                        @foreach($offer->event->positions as $index=>$position)
-                                        <div class="row">
-                                            @if(count($offer->event->positions)>1)
-                                            <h3>{{__('website.events_arr.show_offer.position')}} {{$index+1}}</h3>
-                                            @endif
-                                            @foreach($position->hostesses() as $hostess)
-                                            <div class="col-xs-12 col-sm-3 col-lg-2 dark-text" style="width:auto;padding-right:9px;">	
-                                                <div class="item">
-                                                    <img src="{{url('/images/thumbs/'.$hostess->portrait[0]->name)}}" alt="{{$hostess->portrait[0]->name}}">
-                                                    <div class="item-overlay"></div>	
-                                                    <div class="item-content">
-                                                        <div class="item-top-content">
-                                                            <div class="item-top-content-inner">
-                                                                <div class="item-product">
-                                                                    <div class="item-top-title">
-                                                                        <font size="2" color="fff"><strong>{{$hostess->user->first_name}}</strong></font> 
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>				
-
-                                                        <div class="item-add-content">
-                                                            <div class="item-add-content-inner">
-                                                                <div class="section">
-                                                                    <font size="3" color="ff5a5f"><strong>Booking ID {{$hostess->user_id}}</strong></font><br>
-                                                                    Height {{$hostess->height}} cm<br>
-                                                                    Size {{$hostess->cloth_size}}<br>
-                                                                    Breast/Waist/Hip:<br> {{$hostess->chest}}/{{$hostess->waist}}/{{$hostess->hips}} 
-                                                                </div>
-                                                            </div>
-                                                        </div>									
-                                                    </div>
-                                                </div>	                 
-                                                <p>Booking ID {{$hostess->user_id}}</p>
-                                                <p><a class="btn btn-default" style="width:90%; margin-bottom: 15px;" href="{{route('hostesses.show',$hostess->id)}}" target="_blank" title="Show Hostess"><i class="glyphicon glyphicon-triangle-right" aria-hidden="true"></i>View Details</a></p>
-                                                <hr>
-                                            </div>
-                                            @endforeach
-                                        </div>                                        
-                                        @endforeach
-                                    </div>
-                                </div>
-                                @endif
                             </div>                            
                         </div>
-                        <div id="modal-confirm_offer" class="modal inmodal" tabindex="-1" role="dialog" aria-labelledby="modal-label">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content animated flipInY">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 id="modal-label" class="modal-title">{{__('website.events_arr.show_offer.accept_offer')}}</h4>
-                                    </div>
-                                    <div class="modal-body">{{__('website.events_arr.show_offer.confirm_accept_offer')}}</div>
-                                    <div class="modal-footer">
-                                        <button id="confirm_event" type="button" class="btn btn-default" onclick="accept_offer({{$offer->id}})">{{__('website.events_arr.show_offer.yes')}}</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"> {{__('website.events_arr.show_offer.no')}}</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         
-                        <div id="modal-review_application" class="modal inmodal" tabindex="-1" role="dialog" aria-labelledby="modal-label">
+                        
+                        <div id="modal-rate_hostess" class="modal inmodal" tabindex="-1" role="dialog" aria-labelledby="modal-label">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content animated flipInY">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 id="modal-label" class="modal-title"></h4>
+                                        <h4 id="modal-label" class="modal-title">Rate hostess</h4>
                                     </div>
-                                    <div class="modal-body"></div>
+                                    <div class="modal-body">
+                                        <form id="rate_hostess" method="POST" action="{{route('ratings.store')}}" class="form form-horizontal">
+                                            {{ csrf_field() }}
+                                            <input type='hidden' id="job_id" name='job_id' value=''/>
+                                            <input type='hidden' id="user_id" name='user_id' value=''/>
+                                            
+                                            <div class="form-group rating">                            
+                                                <div class="control-group col-xs-12 col-md-12">
+                                                    <label>
+                                                        <input type="radio" name="stars" value="1" />
+                                                        <span class="icon">★</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="stars" value="2" />
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="stars" value="3" />
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>   
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="stars" value="4" />
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                    </label>
+                                                    <label>
+                                                        <input type="radio" name="stars" value="5" />
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                        <span class="icon">★</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-group">                            
+                                                <div class="control-group col-xs-12 col-md-12">
+                                                    <label for="comment" class="control-label">Comment</label>
+                                                    <textarea class="form-control" name="comment" value="{{old('comment')}}" required></textarea>
+                                                    @if ($errors->has('comment'))
+                                                        <span class="help-block"><strong>{{ $errors->first('comment') }}</strong></span>
+                                                    @endif
+                                                    <div class="errorBox"></div>
+                                                </div>
+                                            </div>
+                                        
+                                    </div>
                                     <div class="modal-footer">
-                                        <button id="review_application_btn" type="button" class="btn btn-default" onclick="">{{__('website.events_arr.show_offer.yes')}}</button>
-                                        <button type="button" class="btn btn-primary" data-dismiss="modal"> {{__('website.events_arr.show_offer.no')}}</button>
+                                        <button id="review_application_btn" type="submit" class="btn btn-default">Rate</button>
+                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -293,59 +350,9 @@
 </div>
 <script type='text/javascript'>
     
-    $(document).on('click', '.accept_application, .reject_application', function(){
-        var id = $(this).attr('data-id'); 
-        if($(this).hasClass('accept_application')){
-            var status = 2;
-        }
-        else{
-            var status = 4;
-        }
-
-        $('#modal-review_application').find('.modal-title').html(status=='2' ? 'Accept application' : 'Reject application'); 
-        $('#modal-review_application').find('.modal-body').html('Are you sure you want to '+(status==2 ? 'accept' : 'reject')+' this application ?'); 
-        $('#review_application_btn').attr('onclick','review_application('+id+','+status+')');
+    $('.rate_hostess').on('click', function(){
+       $('#job_id').val($(this).attr('data-id'));
+       $('#user_id').val($(this).attr('data-user'));
     });
-    
-    function review_application(id,status){
-        $.ajax({
-            headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: '/review_application',
-                    type: 'POST',
-            data: { 'id' : id,
-                    'status' : status},
-            success: function(response){
-                        if(response.warning){
-                            alert(response.warning);
-                        }
-                        else{
-                            alert(response.success);
-                            location.reload();
-                        }
-                    }
-        });    
-    }
-    
-    function accept_offer(id){
-        $.ajax({
-            headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: '/accept_offer',
-                    type: 'POST',
-            data: { 'id' : id},
-            success: function(response){
-                        if(response.warning){
-                            alert(response.warning);
-                        }
-                        else{
-                            alert(response.success);
-                            location.reload();
-                        }
-                    }
-        });    
-    }
 </script>
 @endsection

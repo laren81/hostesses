@@ -190,6 +190,8 @@ Route::group(['middleware' => ['auth','admin']], function()
         
         Route::get('events/{id}/jobs', [EventController::class,'eventJobs'])->name('events.jobs');
         
+        Route::post('/change_job_status', [EventController::class,'changeJobStatus'])->name('change_job_status');
+        
     // Invoices routes    
         
         Route::get('invoices', [InvoiceController::class,'index'])->name('invoices.index');

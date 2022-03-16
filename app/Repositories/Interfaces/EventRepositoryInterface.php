@@ -27,4 +27,7 @@ interface EventRepositoryInterface
     public function getEventPositions($event_id);
     
     public function getEventPositionsWithPrices($event,$prices);
+    
+    public function findJob($id);
+    
 }

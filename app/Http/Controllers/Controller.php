@@ -18,6 +18,7 @@ use App\Repositories\Interfaces\RegionRepositoryInterface;
 use App\Repositories\Interfaces\CityRepositoryInterface;
 use App\Repositories\Interfaces\JobRepositoryInterface;
 use App\Repositories\Interfaces\InvoiceRepositoryInterface;
+use App\Repositories\Interfaces\RatingRepositoryInterface;
 
 class Controller extends BaseController
 {
@@ -34,6 +35,7 @@ class Controller extends BaseController
     protected $cityRepository;
     protected $jobRepository;
     protected $invoiceRepository;
+    protected $ratingRepository;
     
     public function __construct(UserRepositoryInterface $userRepository, 
                                 RoleRepositoryInterface $roleRepository,
@@ -45,7 +47,8 @@ class Controller extends BaseController
                                 RegionRepositoryInterface $regionRepository,
                                 CityRepositoryInterface $cityRepository,
                                 JobRepositoryInterface $jobRepository,
-                                InvoiceRepositoryInterface $invoiceRepository
+                                InvoiceRepositoryInterface $invoiceRepository,
+                                RatingRepositoryInterface $ratingRepository
             ) 
     {
         $this->userRepository = $userRepository;
@@ -59,6 +62,7 @@ class Controller extends BaseController
         $this->cityRepository = $cityRepository;
         $this->jobRepository = $jobRepository;
         $this->invoiceRepository = $invoiceRepository;
+        $this->ratingRepository = $ratingRepository;
     }
     
 }

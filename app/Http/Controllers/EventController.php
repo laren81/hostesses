@@ -153,4 +153,16 @@ class EventController extends Controller
         
         return $events;
     }
+    
+    public function changeJobStatus(Request $request){
+        if($job = $this->jobRepository->findJob($request->id)){
+            $job->status= $request->status;
+            $job->admin_comment = $request->comment;
+            $job->save();
+            
+            return response()->json(['success' => 'Job status updated']);
+        }
+        
+        return response()->json(['warning' => 'Job was not found']);
+    }
 }
